@@ -11,17 +11,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun OutlinedTextFieldWithIconForLoginform(lable: String, icon: ImageVector, contentDescription: String?=null) {
+fun OutlinedTextFieldWithIconForLoginform(lable: String, icon: ImageVector, contentDescription: String?=null, visualTransformation : VisualTransformation = VisualTransformation.None ,state: String, onValueChange:(String) -> Unit) {
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = state,
+        onValueChange = onValueChange,
         modifier = Modifier.padding(all = 8.dp).fillMaxWidth(),
         label = { Text(lable) },
         trailingIcon = {
-            Icon(icon, contentDescription)
-        }
+            Icon(icon, contentDescription= contentDescription)
+        },
+        visualTransformation = visualTransformation
     )
 }
